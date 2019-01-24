@@ -49,6 +49,30 @@ nav {
     color: white;
 }
 
+/* //////// Sign Up Form /////////// */
+
+
+
+.sign-up-div {
+    background-color: #0E0E16;
+    position: absolute;
+    margin: 40px 40px 0 61%;
+}
+
+.sign-up-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.sign-up-input {
+    margin: 10px;
+    border-radius: 100px;
+    border: none;
+    width: 500px;
+    height: 25px;
+    background-color: #fff;
+}
+
 /* //////// Landing Page /////////// */
 
 .browse-div {
