@@ -1,5 +1,6 @@
 * {
     font-family: 'Aleo', serif;
+    box-sizing: border-box;
 }
 
 body {
@@ -51,26 +52,75 @@ nav {
 
 /* //////// Sign Up Form /////////// */
 
+.outer-sign-up-div {
+    display: flex;
+    justify-content: center;
+}
 
+.cross {
+    height: 20px;
+    position: absolute;
+    margin-left: 45%;
+    top: 18px;
+}
 
 .sign-up-div {
-    background-color: lightseagreen;
+    background-color: #384D55;
     position: absolute;
-    margin: 40px 40px 0 61%;
+    width: 60%;
+    min-width: 500px;
+    z-index: 10;
+    display: block;
+    text-align: center;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);}
+
+.sign-up-div h1 {
+    color: white;
+    text-align: center;
+    margin-top: 40px;
 }
 
 .sign-up-form {
-    display: flex;
-    flex-direction: column;
+    width: 100%;
 }
 
+/* 312 x 58 */
+
 .sign-up-input {
-    margin: 10px;
-    border-radius: 100px;
+    margin: 20px;
     border: none;
-    width: 500px;
-    height: 25px;
+    width: 660px;
+    height: 55px;
     background-color: #fff;
+    vertical-align: middle;
+    font-family: 'Quicksand', sans-serif;
+}
+
+.first-name {
+    margin: 20px 1px 20px 20px;
+    width: 328px;
+}
+
+.last-name {
+    margin: 20px 20px 20px 1px;
+    width: 328px;
+}
+
+input[type="text"].sign-up-input::-webkit-input-placeholder {
+    color: #0E0E16;
+    font-size: 15px;
+    padding-left: 10px;
+}
+
+button {
+    color: #0E0E16;
+    font-size: 15px;
+    padding-left: 10px;
+}
+
+.submit {
+    background-color: #E4B224;
+    margin-bottom: 40px;
 }
 
 /* //////// Landing Page /////////// */
@@ -100,6 +150,7 @@ nav {
     position: absolute;
     display: flex;
     justify-content: center;
+
 }
 .parallax {
     height: 300px;
