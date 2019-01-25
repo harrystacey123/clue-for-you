@@ -49,21 +49,23 @@ app.set('view engine', 'ejs');
 //Puclic Folder
 app.use(express.static('./public'));
 
-app.get('/', (req, res) => res.render('index'));
+app.get('/profile', (req, res) => res.render('profile'));
+
+app.get('/', (req, res) => res.render('landing'));
 
 app.post('/upload', (req, res) => {
     upload(req, res, (err) => {
         if (err) {
-            res.render('index', {
+            res.render('profile', {
                 msg: err
             });
         } else {
             if (req.file == undefined) {
-                res.render('index', {
+                res.render('profile', {
                     msg: 'Error: No File Selected!'
                 });
             } else {
-                res.render('index', {
+                res.render('profile', {
                     msg: 'File Uploaded!',
                     file: `uploads/${req.file.filename}`
                 });
