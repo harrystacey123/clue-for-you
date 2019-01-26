@@ -9,6 +9,9 @@ const path = require('path');
 const userRoutes = require('./routes/user')
 
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
 
 // Set Storage engine
 const storage = multer.diskStorage({

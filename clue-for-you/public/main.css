@@ -108,8 +108,14 @@ nav {
 
 input[type="text"].sign-up-input::-webkit-input-placeholder {
     color: #0E0E16;
-    font-size: 15px;
+    opacity: 0.4;
+    font-size: 24px;
     padding-left: 10px;
+}
+
+input[type="text"] {
+    font-size:24px;
+    padding-left: 20px;
 }
 
 button {
@@ -121,6 +127,7 @@ button {
 .submit {
     background-color: #E4B224;
     margin-bottom: 40px;
+    font-size: 24px;
 }
 
 /* //////// Landing Page /////////// */
@@ -130,6 +137,7 @@ button {
     width: 48.5vw;
     background-color: lightseagreen;
     margin: 1% 0.5% 1% 1%;
+    text-decoration: none;
 }
 
 .make-your-own-div {
@@ -137,6 +145,7 @@ button {
     width: 48.5vw;
     background-color: #E4B224;
     margin: 1% 1% 1% 0.5%;
+    text-decoration: none;
 }
 
 .landing-page-buttons {
@@ -171,6 +180,7 @@ button {
     text-align: center;
     font-size: 50px;
     margin-top: 140px;
+    color: #0E0E16;
 }
 
 .welcome-header {
@@ -211,13 +221,20 @@ button {
 
 
 aside {
-    width: 500px;
+    width: 400px;
     background-color: #E4B224;
 }
 
 .picture-clue {
     height: 200px;
     margin: 40px;
+}
+
+.picture-clue-large {
+    position: absolute;
+    height: 40%;
+    margin-left: 30%;
+    margin-right: 30%;
 }
 
 .browse-main {
