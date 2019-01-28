@@ -7,6 +7,7 @@ const multer = require('multer');
 const ejs = require('ejs');
 const path = require('path');
 const userRoutes = require('./routes/user')
+const db = require('./models');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
@@ -16,18 +17,21 @@ app.use(bodyParser.urlencoded({
 // Set Storage engine
 const storage = multer.diskStorage({
     destination: './public/uploads/',
-    fileName: function(req, file, cb) {
-        cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname));
+    filename: function(req, file, cb) {
+        console.log(file.originalname);
+        if(file.originalname.split('.')[1]!='jpg' | 'jpeg' | 'png' | 'gif'){
+            cb('invalid format',null);
+        }
+        else{
+            cb(null,  Date.now() +(file.originalname));
+        }
     }
 });
 
 // Init Upload
 const upload = multer({
-    storage: storage,
-    fileFilter: function(req, file, cb) {
-        checkFileType(file, cb);
-    }
-}).single('myImage');
+    storage: storage
+});
 
 function checkFileType(file, cb) {
     // allowed extensions
@@ -57,27 +61,76 @@ app.use(express.static('./public'));
 
 app.use('/user', userRoutes);
 
-app.get('/profile', (req, res) => res.render('profile'));
+app.get('/new-post', (req, res) => res.render('new-post'));
 app.get('/', (req, res) => res.render('landing'));
-app.get('/browse', (req, res) => res.render('browse'));
+app.get('/browse', (req, res) => {
+    
+    db.post.find({
+        categoryID: 'wc'
+    }, (err, data) => {
+        const mydata = data.map(function(d){
+            return {
+                ans:d.answer,
+                img:d.image,
+                clue:d.clue
+            }
 
-app.post('/upload', (req, res) => {
-    upload(req, res, (err) => {
-        if (err) {
-            res.render('profile', {
-                msg: err
-            });
-        } else {
-            if (req.file == undefined) {
-                res.render('profile', {
-                    msg: 'Error: No File Selected!'
-                });
-            } else {
-                res.render('profile', {
-                    msg: 'File Uploaded!',
-                    file: `uploads/${req.file.filename}`
-                });
-            };
-        };
-    });
+        })
+        console.log(mydata);
+        res.render('browse',{data:mydata});
+    })
+
+});
+
+app.get('/browse/:category', (req, res) => {
+    var category = req.params.category;
+    
+    db.post.find({
+        categoryID: category
+    }, (err, data) => {
+        const mydata = data.map(function(d){
+            return {
+                ans:d.answer,
+                img:d.image,
+                clue:d.clue
+            }
+
+        })
+        console.log(mydata);
+        res.render('browse',{data:mydata});
+    })
+
+});
+
+
+app.post('/upload', upload.single('myImage'),(req, res) => {
+    db.post.create({    
+        answer: req.body.answer,
+        clue: 'harry',
+        categoryID: req.body.category,
+        image: req.file.filename,
+        userID: 'String'})
+    // req.file.filename
+    res.redirect('/browse')
+    // upload(req, res, (err) => {
+    //     if (err) {
+    //         res.render('new-post', {
+    //             msg: err
+    //         });
+    //     } else {
+    //         if (req.file == undefined) {
+    //             res.render('new-post', {
+    //                 msg: 'Error: No File Selected!'
+    //             });
+    //         } else {
+    //             res.render('new-post', {
+    //                 msg: 'File Uploaded!',
+    //                 file: `uploads/${req.file.filename}`
+    //             });
+    //         };
+    //     };
+    // });
+
+    app.get('')
+
 });

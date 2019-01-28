@@ -232,9 +232,13 @@ aside {
 
 .picture-clue-large {
     position: absolute;
-    height: 40%;
-    margin-left: 30%;
-    margin-right: 30%;
+    height: 65%;
+    left: 400px;
+    margin: 40px;
+}
+
+.picture-clue-visibility {
+    display: none;
 }
 
 .browse-main {
@@ -247,6 +251,9 @@ aside {
     justify-content: space-around;
 }
 
+.browse-title {
+    display: inline;
+}
 
 /* //////// Footer /////////// */
 

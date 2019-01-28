@@ -5,15 +5,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Browse - Clue For You</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="./main.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="/main.css" />
     <link href="https://fonts.googleapis.com/css?family=Aleo" rel="stylesheet">
 </head>
 <body>
     <header>
         <nav>
-                <h1 class="title"><a href="/">ClueForYou</a></h1>
+            <h1 class="title"><a href="/">ClueForYou</a></h1>
             <ul class="navlist">
-                <li class="nav-item"><a href="./browse.ejs">Browse</a></li>
+                <li class="nav-item"><a href="./browse">Browse</a></li>
+                <li class="nav-item"><a href="./new-post">Add Post</a></li>
                 <li class="nav-item">Sign Up</li>
             </ul>
         </nav>
@@ -40,7 +41,18 @@
             </div>
         </aside>
         <section class="browse-section">
-            <img class="picture-clue picture-clue-large" src="https://s3.amazonaws.com/filestore.rescuegroups.org/1741/pictures/animals/13987/13987881/63673617_500x500.jpg" alt="">
+                <%= typeof msg != 'undefined' ? msg : '' %>
+
+            <% 
+                data.forEach((post) => {
+                    var src = '/uploads/'+post.img;
+            %>
+            <img class="picture-clue" src="<%- src %>" alt="">
+            <%
+                })
+            %>
+            <img class="picture-clue" src="<%= typeof file != 'undefined' ? file : '' %>" alt="">
+            <img class="picture-clue" src="https://s3.amazonaws.com/filestore.rescuegroups.org/1741/pictures/animals/13987/13987881/63673617_500x500.jpg" alt="">
             <img class="picture-clue" src="https://s3.amazonaws.com/filestore.rescuegroups.org/1741/pictures/animals/13987/13987881/63673617_500x500.jpg" alt="">
             <img class="picture-clue" src="https://s3.amazonaws.com/filestore.rescuegroups.org/1741/pictures/animals/13987/13987881/63673617_500x500.jpg" alt="">
             <img class="picture-clue" src="https://s3.amazonaws.com/filestore.rescuegroups.org/1741/pictures/animals/13987/13987881/63673617_500x500.jpg" alt="">
