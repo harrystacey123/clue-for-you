@@ -1,5 +1,6 @@
 $('.outer-sign-up-div').hide();
 $('.outer-new-post-div').hide();
+$('.outer-log-in-div').hide();
 
 $(document).ready(function() {
     
@@ -13,6 +14,11 @@ $(document).ready(function() {
         $('.outer-sign-up-div').show();
     })
 
+    $('.log-in').on('click', function (e) {
+        e.preventDefault();
+        $('.outer-log-in-div').show();
+    })
+
     $('.new-post').on('click', function (e) {
         e.preventDefault();
         $('.outer-new-post-div').show();
@@ -24,6 +30,10 @@ $(document).ready(function() {
 
     $('.cross').on('click', function () {
         $('.outer-new-post-div').hide();
+    })
+
+    $('.cross').on('click', function () {
+        $('.outer-log-in-div').hide();
     })
 
     $('.make-your-own-div').on('click', function (e) {

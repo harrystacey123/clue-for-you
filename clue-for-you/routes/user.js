@@ -23,9 +23,7 @@ router.post('/signup', (req, res) => {
                     'email': req.body.email,
                     'password': hash
                 }
-                // console.log(`creating new user`);
-                // let user = req.body
-                // user.password = hash
+                
                 User.create(user, (err, newuser)=>{
                     if (err){
                         return console.log(err)

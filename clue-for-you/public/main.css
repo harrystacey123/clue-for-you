@@ -77,7 +77,7 @@ nav {
     display: block;
     text-align: center;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    top: 120px;
+    top: 110px;
 }
 
 .sign-up-div h1 {
@@ -89,8 +89,6 @@ nav {
 .sign-up-form {
     width: 100%;
 }
-
-/* 312 x 58 */
 
 .sign-up-input {
     margin: 20px;
@@ -152,6 +150,62 @@ button {
     height: 55px;
 }
 
+.submit:hover {
+    background-color: rgb(228,178,36, 0.7);
+}
+
+/* //////// Log In Page /////////// */
+
+.outer-log-in-div {
+    display: flex;
+    justify-content: center;
+}
+
+.log-in-div {
+    background-color: #384D55;
+    position: absolute;
+    width: 60%;
+    min-width: 500px;
+    z-index: 10;
+    display: block;
+    text-align: center;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    top: 110px;
+}
+
+.log-in-div h1 {
+    color: white;
+    text-align: center;
+    margin-top: 40px;
+}
+
+.log-in-form {
+    width: 100%;
+}
+
+input[type="text"].log-in-input::-webkit-input-placeholder {
+    color: #0E0E16;
+    opacity: 0.4;
+    font-size: 24px;
+    padding-left: 10px;
+}
+
+input[type="password"].log-in-input::-webkit-input-placeholder {
+    color: #0E0E16;
+    opacity: 0.4;
+    font-size: 24px;
+    padding-left: 10px;
+}
+
+.log-in-input {
+    margin: 20px;
+    border: none;
+    width: 660px;
+    height: 55px;
+    background-color: #fff;
+    vertical-align: middle;
+    font-family: 'Quicksand', sans-serif;
+}
 
 /* //////// Landing Page /////////// */
 
@@ -296,7 +350,7 @@ aside {
     display: block;
     text-align: center;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    top: 120px;
+    top: 110px;
 }
 
 .new-post-div h1 {
@@ -353,6 +407,10 @@ aside {
     margin-top: 20px;
     margin-bottom: 20px;
     line-height: 55px;
+}
+
+.choose-your-file-div label:hover {
+    background-color: rgb(228,178,36, 0.7);
 }
 
 .option-class {
