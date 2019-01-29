@@ -7,42 +7,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="/main.css" />
     <link href="https://fonts.googleapis.com/css?family=Aleo" rel="stylesheet">
+    <script src="main.js"></script>
 </head>
 <body>
     <header>
         <nav>
             <h1 class="title"><a href="/">ClueForYou</a></h1>
             <ul class="navlist">
-                <li class="nav-item"><a href="./browse">Browse</a></li>
-                <li class="nav-item"><a href="./new-post">Add Post</a></li>
-                <li class="nav-item">Sign Up</li>
+                <li class="nav-item"><a href="/browse">Browse</a></li>
+                <li class="nav-item"><a href="/new-post">Add Post</a></li>
+                <li class="nav-item"><a  class="sign-up" href="#">Sign Up</a></li>
             </ul>
         </nav>
     </header>
+    
     <main class="browse-main">
         <aside>
-            <div class='categories hvr-forward'>
+            <a href="/browse/wc" class='categories hvr-forward'>
                 <h1>World Cities</h1>
-            </div>
-            <div class='categories hvr-forward'>
+            </a> 
+            <a href="/browse/uku" class='categories hvr-forward'>
                 <h1>UK Universities</h1>
-            </div>
-            <div class='categories hvr-forward'>
+            </a>
+            <a href="/browse/cof" class='categories hvr-forward'>
                 <h1>Coffee</h1>
-            </div>
-            <div class='categories hvr-forward'>
+            </a>
+            <a href="/browse/lus" class='categories hvr-forward'>
                 <h1>London Underground Stations</h1>
-            </div>
-            <div class='categories hvr-forward'>
+            </a>
+            <a href="/browse/4pow" class='categories hvr-forward'>
                 <h1>4 Pics 1 Word</h1>
-            </div>
-            <div class='categories hvr-forward'>
+            </a>
+            <a href="/browse/kin" class='categories hvr-forward'>
                 <h1>King's Surnames</h1>
-            </div>
+            </a>
         </aside>
         <section class="browse-section">
-                <%= typeof msg != 'undefined' ? msg : '' %>
-
             <% 
                 data.forEach((post) => {
                     var src = '/uploads/'+post.img;
@@ -51,14 +51,7 @@
             <%
                 })
             %>
-            <img class="picture-clue" src="<%= typeof file != 'undefined' ? file : '' %>" alt="">
-            <img class="picture-clue" src="https://s3.amazonaws.com/filestore.rescuegroups.org/1741/pictures/animals/13987/13987881/63673617_500x500.jpg" alt="">
-            <img class="picture-clue" src="https://s3.amazonaws.com/filestore.rescuegroups.org/1741/pictures/animals/13987/13987881/63673617_500x500.jpg" alt="">
-            <img class="picture-clue" src="https://s3.amazonaws.com/filestore.rescuegroups.org/1741/pictures/animals/13987/13987881/63673617_500x500.jpg" alt="">
-            <img class="picture-clue" src="https://s3.amazonaws.com/filestore.rescuegroups.org/1741/pictures/animals/13987/13987881/63673617_500x500.jpg" alt="">
-            <img class="picture-clue" src="https://s3.amazonaws.com/filestore.rescuegroups.org/1741/pictures/animals/13987/13987881/63673617_500x500.jpg" alt="">
-            <img class="picture-clue" src="https://s3.amazonaws.com/filestore.rescuegroups.org/1741/pictures/animals/13987/13987881/63673617_500x500.jpg" alt="">
-
+            <!-- <img class="picture-clue" src="<%= typeof file != 'undefined' ? file : '' %>" alt=""> -->
         </section>
     </main>
     <footer>

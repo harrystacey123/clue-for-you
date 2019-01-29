@@ -15,7 +15,7 @@
             <h1 class="title"><a href="#">ClueForYou</a></h1>
             <ul class="navlist">
                 <li class="nav-item"><a href="./browse">Browse</a></li>
-                <li class="nav-item"><a href="./new-post">Add Post</a></li>
+                <li class="nav-item"><a class="new-post" href="#">Add Post</a></li>
                 <li class="nav-item"><a  class="sign-up" href="#">Sign Up</a></li>
             </ul>
         </nav>
@@ -32,10 +32,34 @@
                     </div>
                     <div>
                         <input class='sign-up-input' type="text" name="email" placeholder="Email">
-                        <input class='sign-up-input' type="text" name="password" placeholder="Password">
-                        <input class='sign-up-input confirm-password' name="confirmpassword" type="text" placeholder="Confirm Password">
+                        <input class='sign-up-input' type="password" name="password" placeholder="Password">
+                        <input class='sign-up-input confirm-password' name="confirmpassword" type="password" placeholder="Confirm Password">
                         <button class="sign-up-input submit" type="submit">Start Making Picture Clues</button>
                     </div>
+                </form>
+            </div>
+        </div>
+        <div class="outer-new-post-div">
+            <div class="new-post-div">
+                <h1>Create a New Post</h1>
+                <img class="cross" src="/images/cross.png" alt="">
+                <%= typeof msg != 'undefined' ? msg : '' %>
+                <form action="upload" method="POST" enctype="multipart/form-data" class="new-post-form">
+                    <select name="category" class="new-post-category">
+                        <option class="option-class" value="wc">World Cities</option>
+                        <option value="uku">UK Unversities</option>
+                        <option value="cof">Coffee</option>
+                        <option value="lus">London Underground Stations</option>
+                        <option value="4pow">4 pics one word</option>
+                        <option value="kin">King's Surnames</option>
+                    </select>
+                    <div class="choose-your-file-div">
+                        <input type="file" name="myImage" id="file" class="choose-file-button" />
+                        <label for="file">Choose a file</label>
+                    </div>
+                    <input type="text" name="clue" placeholder="Give your users a clue" class="new-post-input">
+                    <input type="text" name="answer" placeholder="Answer" class="new-post-input">
+                    <button type="submit" class="submit">Upload</button>
                 </form>
             </div>
         </div>

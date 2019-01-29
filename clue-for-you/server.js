@@ -63,11 +63,13 @@ app.use('/user', userRoutes);
 
 app.get('/new-post', (req, res) => res.render('new-post'));
 app.get('/', (req, res) => res.render('landing'));
+
 app.get('/browse', (req, res) => {
     
     db.post.find({
         categoryID: 'wc'
     }, (err, data) => {
+        console.log(data);
         const mydata = data.map(function(d){
             return {
                 ans:d.answer,
@@ -99,14 +101,20 @@ app.get('/browse/:category', (req, res) => {
         console.log(mydata);
         res.render('browse',{data:mydata});
     })
-
 });
 
+app.delete('/browse', (req, res) => {
+    let postId = req.params.id;
+    db.Post.deleteOne(
+        {id: postId},
+        
+    )
+})
 
 app.post('/upload', upload.single('myImage'),(req, res) => {
     db.post.create({    
         answer: req.body.answer,
-        clue: 'harry',
+        clue: req.body.clue,
         categoryID: req.body.category,
         image: req.file.filename,
         userID: 'String'})

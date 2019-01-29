@@ -7,7 +7,7 @@ const User = db.User
 
 router.post('/signup', (req, res) => {
     if (req.body.password != req.body.confirmpassword) {
-        res.redirect('/');
+        res.json({"err": "Passwords do not match"})
     }
     else{
         bcrypt.hash(req.body.password, 10, (err, hash) => {
@@ -28,18 +28,29 @@ router.post('/signup', (req, res) => {
                 // user.password = hash
                 User.create(user, (err, newuser)=>{
                     if (err){
-                        console.log(err)
+                        return console.log(err)
                     }
                     else{
-                        res.redirect('/browse');
+                        res.json(newuser)
                     }
                     
                 })
         }
         });
     }
-
 });
+
+router.get('/users', (req, res) => {
+    User.find({}, (err, allUsers) => {
+        if (err){
+            return console.log(err)
+        }
+        else{
+            res.json(allUsers)
+        }
+    })
+
+})
 
 
 
