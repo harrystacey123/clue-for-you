@@ -1,58 +1,5 @@
 <%- include('./header'); %>
     <main>
-        <div class="outer-sign-up-div">
-            <div class="sign-up-div">
-                <h1>To upload and share picture clues, sign up here.</h1>
-                <img class="cross" src="/images/cross.png" alt="">
-                <form class="sign-up-form" method="POST" action="/user/signup">
-                    <div class="name-div">
-                        <input class='sign-up-input first-name' type="text" name="firstName" placeholder="First Name">
-                        <input class='sign-up-input last-name' type="text" name="lastName" placeholder="Last Name">
-                    </div>
-                    <div>
-                        <input class='sign-up-input' type="text" name="email" placeholder="Email">
-                        <input class='sign-up-input' type="password" name="password" placeholder="Password">
-                        <input class='sign-up-input confirm-password' name="confirmpassword" type="password" placeholder="Confirm Password">
-                        <button class="sign-up-input submit" type="submit">Start Making Picture Clues</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-        <div class="outer-new-post-div">
-            <div class="new-post-div">
-                <h1>Create a New Post</h1>
-                <img class="cross" src="/images/cross.png" alt="">
-                <%= typeof msg != 'undefined' ? msg : '' %>
-                <form action="upload" method="POST" enctype="multipart/form-data" class="new-post-form">
-                    <select name="category" class="new-post-category">
-                        <option class="option-class" value="wc">World Cities</option>
-                        <option value="uku">UK Unversities</option>
-                        <option value="cof">Coffee</option>
-                        <option value="lus">London Underground Stations</option>
-                        <option value="4pow">4 pics one word</option>
-                        <option value="kin">King's Surnames</option>
-                    </select>
-                    <div class="choose-your-file-div">
-                        <input type="file" name="myImage" id="file" class="choose-file-button" />
-                        <label for="file">Choose a file</label>
-                    </div>
-                    <input type="text" name="clue" placeholder="Give your users a clue" class="new-post-input">
-                    <input type="text" name="answer" placeholder="Answer" class="new-post-input">
-                    <button type="submit" class="submit">Upload</button>
-                </form>
-            </div>
-        </div>
-        <div class="outer-log-in-div">
-            <div class="log-in-div">
-                <h1>Log In</h1>
-                <img class="cross" src="/images/cross.png" alt="">
-                <form action="user/login" method="POST" class="log-in-form">
-                    <input class="log-in-input" type="text" name="log-in-email" placeholder="Email">
-                    <input class="log-in-input" type="password" name="log-in-password">
-                    <button type="submit" class="submit">Log In</button>
-                </form>
-            </div>
-        </div>
         <div id="scene" class="welcome">
             <div data-depth="0.3" class="parallax">
                     <h2 class="welcome-header">Welcome to ClueForYou</h2>

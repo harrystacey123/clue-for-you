@@ -1,22 +1,22 @@
 <%- include('./header'); %>
     <main class="browse-main">
         <aside>
-            <a href="/browse/wc" class='categories hvr-forward'>
+            <a href="/browse/wc" class='wc categories hvr-forward'>
                 <h1>World Cities</h1>
             </a> 
-            <a href="/browse/uku" class='categories hvr-forward'>
+            <a href="/browse/uku" class='uku categories hvr-forward'>
                 <h1>UK Universities</h1>
             </a>
-            <a href="/browse/cof" class='categories hvr-forward'>
+            <a href="/browse/cof" class='cof categories hvr-forward'>
                 <h1>Coffee</h1>
             </a>
-            <a href="/browse/lus" class='categories hvr-forward'>
+            <a href="/browse/lus" class='lus categories hvr-forward'>
                 <h1>London Underground Stations</h1>
             </a>
-            <a href="/browse/4pow" class='categories hvr-forward'>
+            <a href="/browse/4pow" class='4pow categories hvr-forward'>
                 <h1>4 Pics 1 Word</h1>
             </a>
-            <a href="/browse/kin" class='categories hvr-forward'>
+            <a href="/browse/kin" class='kin categories hvr-forward'>
                 <h1>King's Surnames</h1>
             </a>
         </aside>
@@ -25,11 +25,26 @@
                 data.forEach((post) => {
                     var src = '/uploads/'+post.img;
             %>
-            <img class="picture-clue" src="<%- src %>" alt="">
+            <div class="large-img-outer-div">
+                <img class="picture-clue" data-clue="<%- post.clue %>" data-id="<%- post.id %>" src="<%- src %>" alt="">
+                <div class="large-img-div">
+                    <div class="answer-input-div">
+                        <input class="answer-input" type="text" placeholder="Answer" name="Answer">
+                        <button class="answer-button"
+                        name="answer-button">Submit</button>
+                    </div>
+                    <p class="clue-class">Stuck? Click <a class='clue-anchor' href="#">here for a clue</a>:</p>
+                    <b class="clue"><%- post.clue %></b>
+                    <!-- <input type="text" name="editAnswer" placeholder="Edit Answer">
+                    <button name="edit-answer" class="edit-answer-button">Edit Answer</button>
+                    <input type="text" name="editClue" placeholder="Edit Clue">
+                    <button name="edit-clue">Edit Clue</button>
+                    <button>Delete</button> -->
+                </div>
+            </div>
             <%
                 })
             %>
-            <!-- <img class="picture-clue" src="<%= typeof file != 'undefined' ? file : '' %>" alt=""> -->
         </section>
     </main>
     <%- include('./footer'); %>

@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const PostSchema = new Schema ({
     answer: String,
     clue: String,
-    categoryID: String,
+    category: String,
     image: String,
     userID: String
 })

@@ -15,9 +15,74 @@
             <h1 class="title"><a href="/">ClueForYou</a></h1>
             <ul class="navlist">
                 <li class="nav-item"><a href="./browse">Browse</a></li>
-                <li class="nav-item"><a class="new-post" href="#">Add Post</a></li>
+
                 <li class="nav-item"><a class="sign-up" href="#">Sign Up</a></li>
                 <li class="nav-item"><a class="log-in" href="#">Log In</a></li>
+
+                <li class="nav-item"><a class="new-post" href="#">Add Post</a></li>
+                <li class="nav-item"><a class="new-post" href="#">Log Out</a></li>
             </ul>
         </nav>
     </header>
+    <section>
+        <img class="hamburger" src="../public/images/hamburger.png" alt="">
+        <div class="outer-sign-up-div sign-up-display">
+            <div class="sign-up-div">
+                <h1>To upload and share picture clues, sign up here.</h1>
+                <img class="sign-up-cross" src="/images/cross.png" alt="">
+                <form class="sign-up-form" method="POST" action="/user/signup">
+                    <div class="name-div">
+                        <input class='sign-up-input first-name' type="text" name="firstName" placeholder="First Name">
+                        <input class='sign-up-input last-name' type="text" name="lastName" placeholder="Last Name">
+                    </div>
+                    <div>
+                        <input class='sign-up-input' type="text" name="email" placeholder="Email">
+                        <input class='sign-up-input' type="password" name="password" placeholder="Password">
+                        <input class='sign-up-input confirm-password' name="confirmpassword" type="password" placeholder="Confirm Password">
+                        <button class="sign-up-input submit" type="submit">Start Making Picture Clues</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="outer-new-post-div new-post-display">
+            <div class="new-post-div">
+                <h1>Create a New Post</h1>
+                <img class="new-post-cross" src="/images/cross.png" alt="">
+                <%= typeof msg != 'undefined' ? msg : '' %>
+                <form action="/upload" method="POST" enctype="multipart/form-data" class="new-post-form">
+                    <select name="category" class="new-post-category">
+                        <option class="option-class" value="wc">World Cities</option>
+                        <option value="uku">UK Unversities</option>
+                        <option value="cof">Coffee</option>
+                        <option value="lus">London Underground Stations</option>
+                        <option value="4pow">4 pics one word</option>
+                        <option value="kin">King's Surnames</option>
+                    </select>
+                    <div class="choose-your-file-div">
+                        <input type="file" name="myImage" id="file" class="choose-file-button" />
+                        <label for="file">Choose a file</label>
+                    </div>
+                    <input type="text" name="clue" placeholder="Give your users a clue" class="new-post-input">
+                    <input type="text" name="answer" placeholder="Answer" class="new-post-input">
+                    <button type="submit" class="submit">Upload</button>
+                </form>
+            </div>
+        </div>
+        <div class="outer-log-in-div log-in-display">
+            <div class="log-in-div">
+                <h1>Log In</h1>
+                <img class="log-in-cross" src="/images/cross.png" alt="">
+                <form action="user/login" method="POST" class="log-in-form">
+                    <input class="log-in-input" type="text" name="email" placeholder="Email">
+                    <input class="log-in-input" type="password" name="password">
+                    <button type="submit" class="submit">Log In</button>
+                </form>
+            </div>
+        </div>
+    </section>
+    <script
+    src="https://code.jquery.com/jquery-3.3.1.js"
+    integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+    crossorigin="anonymous"></script>
+    <!-- <script src="/main.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/parallax/3.1.0/parallax.min.js"></script>

@@ -8,8 +8,12 @@ const ejs = require('ejs');
 const path = require('path');
 const userRoutes = require('./routes/user')
 const db = require('./models');
+const cookieParser  = require('cookie-parser');
+const auth = require('./modules/auth');
+
 
 app.use(bodyParser.json());
+app.use(cookieParser())
 app.use(bodyParser.urlencoded({
     extended: true
 }));
@@ -59,67 +63,100 @@ app.set('view engine', 'ejs');
 //Puclic Folder
 app.use(express.static('./public'));
 
+app.use( (req, res, next) => {
+
+    const token = req.cookies.clueforyou; 
+    if(token===undefined){ 
+        res.locals.user = null;
+        next();
+    }else{        
+        auth.validateToken(token,(err,data)=>{
+            if(err ){
+                res.status(403).end();
+            }
+            else{
+            res.locals.user = data;
+console.log('hell yea this is state')
+            next();
+            }
+        });
+    }   
+})
+
 app.use('/user', userRoutes);
 
 app.get('/new-post', (req, res) => res.render('new-post'));
 app.get('/', (req, res) => res.render('landing'));
 
 app.get('/browse', (req, res) => {
-    
+    console.log(res.locals.user)
     db.post.find({
-        categoryID: 'wc'
+        category: 'wc'
     }, (err, data) => {
-        console.log(data);
         const mydata = data.map(function(d){
             return {
                 ans:d.answer,
                 img:d.image,
-                clue:d.clue
+                clue:d.clue,
+                category: d.category
             }
 
         })
-        console.log(mydata);
         res.render('browse',{data:mydata});
     })
 
 });
 
 app.get('/browse/:category', (req, res) => {
-    var category = req.params.category;
+    
+    let category = req.params.category;
     
     db.post.find({
-        categoryID: category
+        category: category
     }, (err, data) => {
         const mydata = data.map(function(d){
             return {
+                id: d._id,
                 ans:d.answer,
                 img:d.image,
-                clue:d.clue
+                clue:d.clue,
+                category: d.category
             }
 
         })
-        console.log(mydata);
         res.render('browse',{data:mydata});
     })
 });
 
 app.delete('/browse', (req, res) => {
-    let postId = req.params.id;
-    db.Post.deleteOne(
-        {id: postId},
-        
+    let postId = req.body.id;
+   
+    db.post.deleteOne(
+        {_id: postId}, (err, data) => {
+            if (err) {
+                res.json('error')
+            } else {
+                res.redirect('/browse')
+            }
+
+        }
     )
 })
+
 
 app.post('/upload', upload.single('myImage'),(req, res) => {
     db.post.create({    
         answer: req.body.answer,
         clue: req.body.clue,
-        categoryID: req.body.category,
-        image: req.file.filename,
-        userID: 'String'})
+        category: req.body.category,
+        image: req.file ? req.file.filename : null,
+        userID: 'String'}, (err, newPost) => {
+            if(err) return console.log(err);
+            // res.json(newPost);
+            res.redirect('/browse/'+req.body.category)
+        })
     // req.file.filename
-    res.redirect('/browse')
+    
     // upload(req, res, (err) => {
     //     if (err) {
     //         res.render('new-post', {
@@ -139,6 +176,32 @@ app.post('/upload', upload.single('myImage'),(req, res) => {
     //     };
     // });
 
-    app.get('')
+    // app.delete('browse/post')
 
+});
+
+app.get('/api/posts/:id', (req, res) => {
+    let postId = req.params.id;
+    db.post.findOne({_id: postId })
+    .exec((err, foundPost) => {
+        if (err) { return console.log(err) }
+        res.json(foundPost);
+    });
+});
+
+app.put('/api/posts/:id', (req, res) => {
+    let postId = req.params.id;
+    let updatePost = req.body;
+
+    db.post.findOneAndUpdate(
+        { _id: postId },
+        updatePost,
+        { new: true },
+        (err, updatedPost) => {
+            if (err) {
+                return console.log(err)
+            } 
+            res.redirect('/browse/'+req.body.category)
+        }
+    );
 });

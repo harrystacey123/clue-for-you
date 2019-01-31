@@ -1,6 +1,7 @@
-$('.outer-sign-up-div').hide();
-$('.outer-new-post-div').hide();
-$('.outer-log-in-div').hide();
+// $('.outer-sign-up-div').hide();
+// $('.outer-new-post-div').hide();
+// $('.outer-log-in-div').hide();
+$('.clue').hide();
 
 $(document).ready(function() {
     
@@ -11,29 +12,29 @@ $(document).ready(function() {
 
     $('.sign-up').on('click', function (e) {
         e.preventDefault();
-        $('.outer-sign-up-div').show();
+        $('.outer-sign-up-div').toggleClass('sign-up-display');
     })
 
     $('.log-in').on('click', function (e) {
         e.preventDefault();
-        $('.outer-log-in-div').show();
+        $('.outer-log-in-div').toggleClass('log-in-display');
     })
 
     $('.new-post').on('click', function (e) {
         e.preventDefault();
-        $('.outer-new-post-div').show();
+        $('.outer-new-post-div').toggleClass('new-post-display');
     })
 
-    $('.cross').on('click', function () {
-        $('.outer-sign-up-div').hide();
+    $('.sign-up-cross').on('click', function () {
+        $('.outer-sign-up-div').toggleClass('sign-up-display');
     })
 
-    $('.cross').on('click', function () {
-        $('.outer-new-post-div').hide();
+    $('.new-post-cross').on('click', function () {
+        $('.outer-new-post-div').toggleClass('new-post-display');
     })
 
-    $('.cross').on('click', function () {
-        $('.outer-log-in-div').hide();
+    $('.log-in-cross').on('click', function () {
+        $('.outer-log-in-div').toggleClass('log-in-display');
     })
 
     $('.make-your-own-div').on('click', function (e) {
@@ -41,11 +42,37 @@ $(document).ready(function() {
         $('.outer-sign-up-div').show();
     })
 
-    $(".picture-clue").on('click', function(){
-        $(".picture-clue").addClass("picture-clue-large");
+    $('.clue-anchor').on('click', function () {
+        $('.clue').show();
+    })
+
+    $('.picture-clue').on('click', function () {
+        let postId = $(this).attr('data-id');
+        $(this).toggleClass('picture-clue-large');
+        $(this).siblings('.large-img-div').toggleClass('large-img-div-2');
+
+        let displayClass = $(this).attr('class').split(" ").find(cl => cl==='picture-clue-large');
+        if(displayClass === 'picture-clue-large'){
+            $.ajax({
+                method: 'GET',
+                url: `http://localhost:3000/api/posts/${postId}`,
+                success: function (response) {
+                    $('.large-img-div').append()
+                }
+            })
+        }
     });
-
-    // $('.browse-section').append(<h1>req.params.category</h1>)
-
+    
+    $('.edit-answer-button').on('click', function() {
+        let postId = $(this).attr('data-id');
+        $.ajax({
+            method: 'PUT',
+            url: `http://localhost:3000/api/posts/${postId}`,
+            success: function() {
+                var answerVal = $('input[name=editAnswer]').val();
+                console.log(answerVal);
+            }
+        })
+    })
 
 });
