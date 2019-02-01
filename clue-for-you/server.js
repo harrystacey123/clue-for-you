@@ -11,7 +11,6 @@ const db = require('./models');
 const cookieParser  = require('cookie-parser');
 const auth = require('./modules/auth');
 
-
 app.use(bodyParser.json());
 app.use(cookieParser())
 app.use(bodyParser.urlencoded({
@@ -56,7 +55,6 @@ app.listen(port, () => {
     console.log(`We are live on ${port}`)
 });
 
-
 //EJS
 app.set('view engine', 'ejs');
 
@@ -76,7 +74,6 @@ app.use( (req, res, next) => {
             }
             else{
             res.locals.user = data;
-console.log('hell yea this is state')
             next();
             }
         });
@@ -86,10 +83,58 @@ console.log('hell yea this is state')
 app.use('/user', userRoutes);
 
 app.get('/new-post', (req, res) => res.render('new-post'));
-app.get('/', (req, res) => res.render('landing'));
+app.delete('/post', (req, res) => res.json('new-post'));
+app.get('/profile', (req, res) => 
+    db.post.find({
+    }, (err, data) => {
+    const mydata = data.map(function(d){
+        return {
+            id: d._id,
+            ans:d.answer,
+            img:d.image,
+            clue:d.clue,
+            category: d.category
+        }
+
+    })
+    res.render('profile', {logindata: res.locals.user, data:mydata, m:{}})
+})
+
+
+    );
+
+app.get('/', (req, res) => {
+    console.log(req.query.v);
+    let m = {err: false}
+    
+    if (req.query.v != undefined) {
+        var q = req.query.v.split('-');
+        for (let i = 0; i < q.length; i++) {
+            if (q[i] === 'lastname') {
+                m.lastname = 'invalid lastname';
+                m.err = true;
+            }
+            else if (q[i] === 'firstname') {
+                m.firstname = 'invalid firstname';
+                m.err = true;
+            }
+            else if (q[i] === 'email') {
+                m.email = 'invalid email';
+                m.err = true;
+            }
+            else if (q[i] === 'password') {
+                m.password = 'invalid password';
+                m.err = true;
+            }
+        }
+    } 
+    res.render('landing', {logindata: res.locals.user, m:m})});
+
+// app.get('/profile', (req, res) => {
+
+// })
 
 app.get('/browse', (req, res) => {
-    console.log(res.locals.user)
     db.post.find({
         category: 'wc'
     }, (err, data) => {
@@ -98,14 +143,15 @@ app.get('/browse', (req, res) => {
                 ans:d.answer,
                 img:d.image,
                 clue:d.clue,
-                category: d.category
+                category: d.category,
             }
-
         })
-        res.render('browse',{data:mydata});
+
+        res.render('browse',{logindata:res.locals.user,data:mydata, m:{}});
     })
 
 });
+
 
 app.get('/browse/:category', (req, res) => {
     
@@ -124,24 +170,24 @@ app.get('/browse/:category', (req, res) => {
             }
 
         })
-        res.render('browse',{data:mydata});
+        res.render('browse',{logindata:res.locals.user,data:mydata, m:{}});
     })
 });
 
 app.delete('/browse', (req, res) => {
     let postId = req.body.id;
-   
+
     db.post.deleteOne(
         {_id: postId}, (err, data) => {
             if (err) {
                 res.json('error')
             } else {
-                res.redirect('/browse')
+                res.json({msg: 'success'});
             }
-
         }
     )
 })
+
 
 
 app.post('/upload', upload.single('myImage'),(req, res) => {
@@ -150,10 +196,10 @@ app.post('/upload', upload.single('myImage'),(req, res) => {
         clue: req.body.clue,
         category: req.body.category,
         image: req.file ? req.file.filename : null,
-        userID: 'String'}, (err, newPost) => {
+        userID: res.locals.user.id }, (err, newPost) => {
             if(err) return console.log(err);
             // res.json(newPost);
-            res.redirect('/browse/'+req.body.category)
+            res.redirect('/browse/')
         })
     // req.file.filename
     
@@ -180,7 +226,7 @@ app.post('/upload', upload.single('myImage'),(req, res) => {
 
 });
 
-app.get('/api/posts/:id', (req, res) => {
+app.get('/api/post/:id', (req, res) => {
     let postId = req.params.id;
     db.post.findOne({_id: postId })
     .exec((err, foundPost) => {
@@ -189,9 +235,31 @@ app.get('/api/posts/:id', (req, res) => {
     });
 });
 
-app.put('/api/posts/:id', (req, res) => {
+app.get('/api/posts/:id', (req, res) => {
     let postId = req.params.id;
     let updatePost = req.body;
+
+    db.post.findOne(
+        { _id: postId },
+        (err, data) => {
+            if (err) {
+                return console.log(err)
+            } 
+            res.json(data)
+        }
+    );
+});
+
+app.post('/api/posts/edit/:id', (req, res) => {
+    let postId = req.params.id;
+    let updatePost = {
+        answer: req.body.answer,
+        category: req.body.category,
+        clue: req.body.clue
+    }
+    console.log('dddddddddddddddddddddddppppp');
+    console.log(req.body);
+console.log(updatePost);
 
     db.post.findOneAndUpdate(
         { _id: postId },
@@ -201,7 +269,7 @@ app.put('/api/posts/:id', (req, res) => {
             if (err) {
                 return console.log(err)
             } 
-            res.redirect('/browse/'+req.body.category)
+            res.redirect('/profile/')
         }
     );
 });

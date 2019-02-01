@@ -6,7 +6,10 @@ const PostSchema = new Schema ({
     clue: String,
     category: String,
     image: String,
-    userID: String
+    userID: {
+        type: Schema.Types.ObjectId,
+        ref: 'User'
+    }
 })
 
 const Post = mongoose.model('post', PostSchema);

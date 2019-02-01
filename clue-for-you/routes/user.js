@@ -17,26 +17,17 @@ console.log('this is my email'+email)
             res.redirect('/');
         }else{
             if(data!==null){
-                console.log('ddddddddddddddddddddddddd')
-                console.log(data)
-                    
                 bcrypt.compare(password, data.password, (err, resp)=> {
                     if(err){
                         console.log('this is hash error')
                         res.redirect('/');
                     }else{    
-
-
                         res.cookie('clueforyou',                        Auth.getToken(data._id), { expires: new Date(Date.now() + 86400000), httpOnly: true,path:'/',maxAge:86400000 });
-
                         res.redirect('/browse');    
-                        // cb(false,auth.getToken(data[0]._id));
                     }
                 });
-                    
             }
-            else{
-
+            else {
                 res.redirect('/');
             }
         }
@@ -45,14 +36,33 @@ console.log('this is my email'+email)
 
 
 router.post('/signup', (req, res) => {
-    if (req.body.password != req.body.confirmpassword) {
-       res.redirect('/')
-    }
-    else{
+    
+    
+
+        //check password,
+        //check email,
+        var err = ''
+        if (req.body.password != req.body.confirmpassword) {
+            err = 'password';
+        }
+        if (! (/^[a-zA-Z]+$/).test(req.body.firstName)) {
+            err += '-firstname';
+
+        }
+        if (! (/^[a-zA-Z]+$/).test(req.body.lastName)) {
+            err += '-lastname';
+
+        }
+        if (! (/^\S+@\S+$/).test(req.body.email)) {
+            err += '-email'
+
+        }
+        if (err != '') {
+            res.redirect('/?v=' + err)
+        }
+
         bcrypt.hash(req.body.password, 10, (err, hash) => {
-            console.log(`hashing`);
             if (err) {
-                console.log('this is error for hashing')
                 return res.status(500).json({
                     error: req.body
                 });
@@ -63,7 +73,6 @@ router.post('/signup', (req, res) => {
                     'email': req.body.email,
                     'password': hash
                 }
-                
                 User.create(user, (err, newuser)=>{
                     if (err){
                         console.log('this is error usercreation')
@@ -76,7 +85,7 @@ router.post('/signup', (req, res) => {
                 })
         }
         });
-    }
+    
 });
 
 router.get('/users', (req, res) => {
@@ -89,6 +98,11 @@ router.get('/users', (req, res) => {
         }
     })
 })
+
+router.get('/logout',(req,res)=>{
+    res.clearCookie("clueforyou");
+        res.redirect('/');
+});
 
 
 

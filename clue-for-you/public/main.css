@@ -61,11 +61,26 @@ nav {
 
 .hamburger {
     position: absolute;
-    height: 100px;
-    width: 100px;
+    height: 50px;
+    width: 50px;
     z-index: 100;
-    right: 50px;
-    top: 50px;
+    right: 10px;
+    top: 12px;
+    visibility: hidden;
+}
+
+.hamburger-cross {
+    position: absolute;
+    height: 50px;
+    width: 50px;
+    z-index: 100;
+    right: 10px;
+    top: 12px;
+    visibility: hidden;
+}
+
+.navlist-hamburger {
+    display: none;
 }
 
 /* //////// Sign Up Form /////////// */
@@ -75,7 +90,7 @@ nav {
     justify-content: center;
 }
 
-.sign-up-cross, .log-in-cross, .new-post-cross {
+.sign-up-cross, .log-in-cross, .new-post-cross, .edit-post-cross {
     height: 20px;
     position: absolute;
     margin-left: 45%;
@@ -168,6 +183,11 @@ button {
     background-color: rgb(228,178,36, 0.7);
 }
 
+.error-firstname {
+    color: #0E0E16;
+    background-color: #FFD1D5;
+    border: 2px solid #CD0001
+}
 
 /* //////// Log In Page /////////// */
 
@@ -332,6 +352,10 @@ aside {
     margin-bottom: 0;
 }
 
+/* .picture-clue-correct {
+    box-shadow: 20px 20px 20px 10px rgba(0, 255, 13, 0.8);
+} */
+
 .answer-input {
     margin-left: 40px;
     width: 240px;
@@ -350,6 +374,16 @@ aside {
     background-color: #E4B224;
     color: #0E0E16;
     font-family: 'Quicksand', sans-serif;
+}
+
+.profile-section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.large-img-outer-div {
+    position: relative;
 }
 
 .large-img-div {
@@ -385,12 +419,39 @@ aside {
 .browse-section {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: flex-start;
 }
 
 .browse-title {
     display: inline;
 }
+
+.correct-header {
+    color: lawngreen;
+    border: 1px solid lawngreen;
+    text-align: center;
+    width: 300px;
+    margin-left: 40px;
+    background-color: rgb(213, 255, 170);
+}
+
+.incorrect-header {
+    color: darkred;
+    border: 1px solid darkred;
+    text-align: center;
+    width: 300px;
+    margin-left: 40px;
+    background-color: rgb(255, 170, 170);
+}
+
+.correct-header-display {
+    display: none;
+}
+
+.incorrect-header-display {
+    display: none;
+}
+
 
 /* //////// New Post Page /////////// */
 
@@ -494,6 +555,38 @@ input[type="text"].new-post-input::-webkit-input-placeholder {
     display: none;
 }
 
+.display-clue {
+    display: none;
+}
+
+.outer-edit-post-div {
+    display: flex;
+    justify-content: center;
+}
+
+.edit-post-display {
+    display: none;
+}
+/* //////// Your Posts Page /////////// */
+
+
+.red-cross {
+    height: 25px;
+    position: absolute;
+    left: 224px;
+    top: 30px;
+}
+
+.edit-post-button {
+    position: absolute;
+    left: 100px;
+    top: 210px;
+    background-color: #E4B224;
+    color: #0E0E16;
+    font-family: 'Quicksand', sans-serif;
+    border: 1px solid #0E0E16;
+}
+
 
 /* //////// Footer /////////// */
 
@@ -518,6 +611,33 @@ footer {
 }
 
 @media screen and (max-width: 930px) {
+    .hamburger {
+        visibility: visible;
+    }
 
+    .navlist {
+        display: none;
+    }
 
+    .navlist-hamburger {
+        display: flex;
+        flex-direction: column;
+        background-color: #0E0E16;
+        margin: 0;
+        padding: 0;
+        text-align: center;
+    }
+
+    .hamburger-item {
+        text-align: center;
+        margin: 5px;
+    }
+    .hamburger-div {
+        position: absolute;
+        width: 100%;
+    }
+
+    .nav-item-hamburger {
+        margin: 5px;
+    }
 }

@@ -24,22 +24,21 @@
             <% 
                 data.forEach((post) => {
                     var src = '/uploads/'+post.img;
+                    console.log(post);
             %>
             <div class="large-img-outer-div">
-                <img class="picture-clue" data-clue="<%- post.clue %>" data-id="<%- post.id %>" src="<%- src %>" alt="">
+                <img class="picture-clue picture-clue-correct" data-clue="<%- post.clue %>" data-id="<%- post.id %>" src="<%- src %>" alt="">
                 <div class="large-img-div">
                     <div class="answer-input-div">
                         <input class="answer-input" type="text" placeholder="Answer" name="Answer">
                         <button class="answer-button"
-                        name="answer-button">Submit</button>
+                        name="answer-button" post-answer="<%- post.ans %>">Submit</button>
                     </div>
                     <p class="clue-class">Stuck? Click <a class='clue-anchor' href="#">here for a clue</a>:</p>
-                    <b class="clue"><%- post.clue %></b>
-                    <!-- <input type="text" name="editAnswer" placeholder="Edit Answer">
-                    <button name="edit-answer" class="edit-answer-button">Edit Answer</button>
-                    <input type="text" name="editClue" placeholder="Edit Clue">
-                    <button name="edit-clue">Edit Clue</button>
-                    <button>Delete</button> -->
+                    <b class="clue display-clue"><%- post.clue %></b>
+                    <h1 class="correct-header correct-header-display">Correct</h1>
+                    <h1 class="incorrect-header incorrect-header-display">Wrong. Try again.</h1>
+
                 </div>
             </div>
             <%

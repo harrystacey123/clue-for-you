@@ -1,0 +1,31 @@
+<%- include('./header'); %>
+
+<h1>Your Posts</h1>
+<section class="profile-section">
+            <% 
+                data.forEach((post) => {
+                    var src = '/uploads/'+post.img;
+                    console.log(post);
+            %>
+
+                <div class="large-img-outer-div">
+                        <img data-id=<%- post.id %> class="red-cross" src="/images/red-cross.png" alt="">
+                        <button class="edit-post-button">Edit Post</button>
+                        <img class="picture-clue profile-page" data-clue="<%- post.clue %>" data-id="<%- post.id %>" src="<%- src %>" alt="">
+
+                </div>
+        
+            <%
+                })
+            %>
+        </section>
+        <script
+        src="https://code.jquery.com/jquery-3.3.1.js"
+        integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+        crossorigin="anonymous"></script>
+        <script src="/main.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/parallax/3.1.0/parallax.min.js"></script>
+        <script type="text/javascript">
+            var m = <% m %>
+            console.log(m);
+        </script>
