@@ -32,6 +32,10 @@ nav {
     color: white;
 }
 
+.title a:hover {
+    color: lightseagreen;
+}
+
 .title a {
     text-decoration: none;
     color: white;
@@ -52,6 +56,10 @@ nav {
     font-size: 20px;
     vertical-align: middle;
     color: white !important;
+}
+
+.nav-item a:hover {
+    color: #E4B224
 }
 
 .nav-item a {
@@ -252,12 +260,20 @@ input[type="password"].log-in-input::-webkit-input-placeholder {
     text-decoration: none;
 }
 
+.browse-div:hover {
+    background-color: rgb(0,185,172, 0.9);
+}
+
 .make-your-own-div {
     height: 100vh;
     width: 48.5vw;
     background-color: #E4B224;
     margin: 1% 1% 1% 0.5%;
     text-decoration: none;
+}
+
+.make-your-own-div:hover {
+    background-color: rgb(228,178,36, 0.8);
 }
 
 .landing-page-buttons {
@@ -328,7 +344,7 @@ input[type="password"].log-in-input::-webkit-input-placeholder {
 }
 
 .categories {
-    padding: 10px 0 10px 20px;
+    padding: 20px 0 20px 20px;
     background-color: #E4B224;
     width: 400px;
     color: #0E0E16;
@@ -502,7 +518,7 @@ aside {
 
 .choose-your-file-div {
     display: flex;
-    margin-left: 100px;
+    margin-left: 150px;
 
 }
 
@@ -585,6 +601,10 @@ input[type="text"].new-post-input::-webkit-input-placeholder {
     color: #0E0E16;
     font-family: 'Quicksand', sans-serif;
     border: 1px solid #0E0E16;
+}
+
+.your-posts {
+    margin-left: 40px;
 }
 
 

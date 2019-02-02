@@ -49,20 +49,7 @@ $(document).ready(function() {
     // })
 
     $('.clue-anchor').on('click', function () {
-        $('.clue').toggleClass('display-clue');
-    })
-
-
-    $('.answer-button').on('click', function () {
-        $('.clue').hide()
-        answer = $(this).attr('post-answer');
-        if ($('.answer-input').val() === answer) {
-            console.log('Thats Correct');
-            $('correct-header').toggleClass('.correct-header-display')
-        } else {
-            console.log('Wrong. Try again');
-            $('.incorrect-header').toggleClass('.incorrect-header-display');
-        }
+        $(".large-img-div-2 > b").toggleClass('display-clue');
     })
 
     $('.red-cross').on('click', function () {
@@ -107,54 +94,30 @@ $(document).ready(function() {
         console.log($(this).serialize())
     })
 
-//make ajax call to 
-// ma
-
-
-    // $( ".hamburger-cross" ).hide();
-    // $( ".hamburger-div" ).hide();
-    // $( ".hamburger" ).on('click', function() {
-    //     $( ".hamburger-div" ).slideToggle( "slow", function() {
-    //         $( ".hamburger" ).hide();
-    //         $( ".hamburger-cross" ).show();
-    //     });
-    // });
-
-    // $( ".cross" ).click(function() {
-    // $( ".menu" ).slideToggle( "slow", function() {
-    // $( ".cross" ).hide();
-    // $( ".hamburger" ).show();
-    // });
-    // });
-
     $('.picture-clue').on('click', function () {
         
         $(this).toggleClass('picture-clue-large');
         $(this).siblings('.large-img-div').toggleClass('large-img-div-2');
-
-        // let postId = $(this).attr('data-id');
-        // let displayClass = $(this).attr('class').split(" ").find(cl => cl==='picture-clue-large');
-        // if(displayClass === 'picture-clue-large'){
-        //     $.ajax({
-        //         method: 'GET',
-        //         url: `http://localhost:3000/api/post/${postId}`,
-        //         success: function (response) {
-        //             $('.large-img-div').append()
-        //         }
-        //     })
-        // }
+        // $('.correct-header').addClass('correct-header-display');
+        // $('.correct-header').addClass('incorrect-header-display');
+        // $('.incorrect-header').addClass('incorrect-header-display');
+        // $('.incorrect-header').addClass('correct-header-display');
     });
-    
-    // $('.edit-answer-button').on('click', function() {
-    //     let postId = $(this).attr('data-id');
-    //     $.ajax({
-    //         method: 'PUT',
-    //         url: `http://localhost:3000/api/posts/${postId}`,
-    //         success: function() {
-    //             var answerVal = $('input[name=editAnswer]').val();
-    //             console.log(answerVal);
-    //         }
-    //     })
-    // })
 
+    $('.answer-button').on('click', function () {
+        let h1 = $(".large-img-div-2 > h1").find(".correct-header");
+        console.log(h1);
+        $('.clue').hide()
+        answer = $(this).attr('post-answer');
+        if ($('.answer-input').val() === answer) {
+            console.log('Thats Correct');
+            $(".large-img-div-2 > h1").toggleClass('correct-header-display');
+            $(".large-img-div-2 > h1").text('Correct')
+        } else {
+            console.log('Wrong. Try again');
+            $(".large-img-div-2 > h1").toggleClass('incorrect-header-display');
+            $(".large-img-div-2 > h1").text('InCorrect');
+        }
+    })
+    
 });

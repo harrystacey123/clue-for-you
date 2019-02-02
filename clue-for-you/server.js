@@ -84,8 +84,11 @@ app.use('/user', userRoutes);
 
 app.get('/new-post', (req, res) => res.render('new-post'));
 app.delete('/post', (req, res) => res.json('new-post'));
-app.get('/profile', (req, res) => 
+app.get('/profile', (req, res) => {
+    console.log('dddddddddddddddddddddd')
+    console.log(res.locals.user);
     db.post.find({
+        userID: res.locals.user.id
     }, (err, data) => {
     const mydata = data.map(function(d){
         return {
@@ -101,7 +104,7 @@ app.get('/profile', (req, res) =>
 })
 
 
-    );
+ } );
 
 app.get('/', (req, res) => {
     console.log(req.query.v);
