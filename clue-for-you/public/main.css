@@ -443,12 +443,12 @@ aside {
 }
 
 .correct-header {
-    color: lawngreen;
-    border: 1px solid lawngreen;
+    color: #0E0E16;
+    border: 1px solid #0E0E16;
     text-align: center;
     width: 300px;
     margin-left: 40px;
-    background-color: rgb(213, 255, 170);
+    background-color: white;
 }
 
 .incorrect-header {
@@ -515,13 +515,10 @@ aside {
     font-family: 'Quicksand', sans-serif;
 }
 
-
 .choose-your-file-div {
     display: flex;
     margin-left: 150px;
-
 }
-
 
 .choose-file-button {
 	width: 0.1px;

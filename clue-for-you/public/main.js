@@ -43,18 +43,13 @@ $(document).ready(function() {
         $('.outer-log-in-div').toggleClass('log-in-display');
     })
 
-    // $('.make-your-own-div').on('click', function (e) {
-    //     e.preventDefault()
-    //     $('.outer-sign-up-div').show();
-    // })
-
-    $('.clue-anchor').on('click', function () {
+    $('.clue-anchor').on('click', function (e) {
+        e.preventDefault();
+        $(this).parent('p.clue-class').siblings('b.clue').toggleClass('display-clue');
         $(".large-img-div-2 > b").toggleClass('display-clue');
     })
 
     $('.red-cross').on('click', function () {
-        // $(this).parent('div.large-img-outer-div').remove();
-        // return;
         var id= $(this).data('id');
         console.log(id)
         var ths = $(this);
@@ -95,8 +90,12 @@ $(document).ready(function() {
     })
 
     $('.picture-clue').on('click', function () {
-        
+        $('.picture-clue').removeClass('picture-clue-large');
+        $('.large-img-div').removeClass('large-img-div-2');
+        $('b.clue').addClass('display-clue');
+        $('h1.correct-header').text('').hide();
         $(this).toggleClass('picture-clue-large');
+        $('.correct-header').text('').hide()
         $(this).siblings('.large-img-div').toggleClass('large-img-div-2');
         // $('.correct-header').addClass('correct-header-display');
         // $('.correct-header').addClass('incorrect-header-display');
@@ -104,19 +103,19 @@ $(document).ready(function() {
         // $('.incorrect-header').addClass('correct-header-display');
     });
 
-    $('.answer-button').on('click', function () {
-        let h1 = $(".large-img-div-2 > h1").find(".correct-header");
-        console.log(h1);
+    $('.answer-button').on('click', function (e) {
+        // let h1 = $(".large-img-div-2 > h1").find(".correct-header");
+        // console.log(h1);
         $('.clue').hide()
+        console.log()
+
         answer = $(this).attr('post-answer');
         if ($('.answer-input').val() === answer) {
-            console.log('Thats Correct');
-            $(".large-img-div-2 > h1").toggleClass('correct-header-display');
-            $(".large-img-div-2 > h1").text('Correct')
+            $(this).parent('div.answer-input-div').siblings('div.harry').children('h1').text("Correct").show()
+
         } else {
             console.log('Wrong. Try again');
-            $(".large-img-div-2 > h1").toggleClass('incorrect-header-display');
-            $(".large-img-div-2 > h1").text('InCorrect');
+            $(this).parent('div.answer-input-div').siblings('div.harry').children('h1').text("Incorrect").show()
         }
     })
     
