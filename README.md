@@ -2,7 +2,7 @@
 
 ## GA Project 4
 
-This was my final project at General Assembly San Francisco, a full time web development course. It was completed #individually# during weeks 11 and 12. 
+This was my final project at General Assembly San Francisco, a full time web development course. It was completed __individually__ during weeks 11 and 12. 
 
 Heroku link: https://clue-for-you.herokuapp.com
 
