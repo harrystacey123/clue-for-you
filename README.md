@@ -1,6 +1,6 @@
-## ClueForYou
+# ClueForYou
 
-# GA Project 4
+## GA Project 4
 
 This was my final project at General Assembly San Francisco, a full time web development course. It was completed #individually# during weeks 11 and 12. 
 
@@ -40,7 +40,7 @@ Wireframes, ERD and progress can be found on my Trello board https://trello.com/
 I knew it would be challenging building my first individual full stack application, especially under such time pressure. It helped greatly that I had a huge interest in what I was building. I have been making picture quizzes for years and it is a great feeling finally being able to share them on an improved platform. I have gained valuable experience via this project which I look forward to carrying through to the many more project I build. 
 
 
-## Technologies Used 
+# Technologies Used 
 
 * HTML
 * CSS
