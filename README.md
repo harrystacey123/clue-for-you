@@ -6,7 +6,7 @@ This was my final project at General Assembly San Francisco, a full time web dev
 
 Heroku link: https://clue-for-you.herokuapp.com
 
-## Breif
+## Brief
 
 Build a full stack web application with full CRUD functionality using a tech stack of our choice, which must be deployed to Heroku. 
 
