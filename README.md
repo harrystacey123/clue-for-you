@@ -55,6 +55,8 @@ I knew it would be challenging building my first individual full stack applicati
 ## Contact 
 
 harrystacey@live.co.uk
+
 07595710110
+
 http://harrystacey.co.uk
 
