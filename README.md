@@ -45,13 +45,14 @@ __Models__
 
 ## Code Snippets
 
-![code-snippet-2](https://user-images.githubusercontent.com/42447565/55079090-6cf63480-5093-11e9-84c0-137b9921c245.png)
-
 Here is some DOM manipulation I wrote to display a clue for my picture trivia. 
 
-![code-snippet-1](https://user-images.githubusercontent.com/42447565/55078973-2e607a00-5093-11e9-8146-8b37f1262a94.png)
+![code-snippet-2](https://user-images.githubusercontent.com/42447565/55079090-6cf63480-5093-11e9-84c0-137b9921c245.png)
+
 
 This is the code I wrote to display 'Correct' or 'Incorrect' depending on whether the input value matched the answer.
+
+![code-snippet-1](https://user-images.githubusercontent.com/42447565/55078973-2e607a00-5093-11e9-8146-8b37f1262a94.png)
 
 
 ## Lessons Learned
