@@ -35,13 +35,15 @@ Registered users can:
 
 __Wireframes__
 
-![wireframe1](https://user-images.githubusercontent.com/42447565/55079121-7da6aa80-5093-11e9-85d5-5fcdbafcfcc9.JPG)
+![wireframe1](https://user-images.githubusercontent.com/42447565/55080080-61a40880-5095-11e9-8b91-8a8cdd8170a7.png)
 
-![wireframe2](https://user-images.githubusercontent.com/42447565/55079155-89926c80-5093-11e9-8f94-1f9ae778a3f1.JPG)
+![wireframes2](https://user-images.githubusercontent.com/42447565/55080127-75e80580-5095-11e9-9560-72684f4a72a6.JPG)
+
 
 __Models__
 
-![models](https://user-images.githubusercontent.com/42447565/55079098-7384ac00-5093-11e9-99e9-eb8f8d8e5d5c.JPG)
+![models](https://user-images.githubusercontent.com/42447565/55080035-4df8a200-5095-11e9-944f-6b85fe2c3eea.jpg)
+
 
 ## Code Snippets
 
