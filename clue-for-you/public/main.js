@@ -97,17 +97,10 @@ $(document).ready(function() {
         $(this).toggleClass('picture-clue-large');
         $('.correct-header').text('').hide()
         $(this).siblings('.large-img-div').toggleClass('large-img-div-2');
-        // $('.correct-header').addClass('correct-header-display');
-        // $('.correct-header').addClass('incorrect-header-display');
-        // $('.incorrect-header').addClass('incorrect-header-display');
-        // $('.incorrect-header').addClass('correct-header-display');
     });
 
     $('.answer-button').on('click', function (e) {
-        // let h1 = $(".large-img-div-2 > h1").find(".correct-header");
-        // console.log(h1);
         $('.clue').hide()
-        console.log()
 
         answer = $(this).attr('post-answer');
         if ($('.answer-input').val() === answer) {
@@ -118,5 +111,6 @@ $(document).ready(function() {
             $(this).parent('div.answer-input-div').siblings('div.harry').children('h1').text("Incorrect").show()
         }
     })
+
     
 });

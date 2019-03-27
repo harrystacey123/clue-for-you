@@ -51,9 +51,7 @@ function checkFileType(file, cb) {
 
 const port = 3000;
 
-app.listen(port, () => {
-    console.log(`We are live on ${port}`)
-});
+app.listen(process.env.PORT || 3000)
 
 //EJS
 app.set('view engine', 'ejs');
