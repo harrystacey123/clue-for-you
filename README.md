@@ -33,7 +33,8 @@ Registered users can:
 
 ## Build Process
 
-![Wireframes-1](../clue-for-you/public/images/code-snippet-1.png)
+![code-snippet-1](https://user-images.githubusercontent.com/42447565/55078973-2e607a00-5093-11e9-8146-8b37f1262a94.png)
+
 
 ## Lessons Learned
 
