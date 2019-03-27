@@ -33,7 +33,7 @@ Registered users can:
 
 ## Build Process
 
-Wireframes, ERD and progress can be found on my Trello board https://trello.com/b/PyNY5SIQ/final-project-clue-for-you
+![Wireframes-1](../clue-for-you/public/images/code-snippet-1.png)
 
 ## Lessons Learned
 
