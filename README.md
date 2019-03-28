@@ -1,5 +1,8 @@
 # ClueForYou
 
+![clueforyou](https://user-images.githubusercontent.com/42447565/55149138-805fd900-5141-11e9-9d06-ac60390f1fb5.jpeg)
+
+
 ## GA Project 4
 
 This was my final project at General Assembly San Francisco, a full time web development course. It was completed __individually__ during weeks 11 and 12. 
