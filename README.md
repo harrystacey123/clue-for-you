@@ -36,6 +36,10 @@ Registered users can:
 
 ## Build Process
 
+
+Due to this being my first full stack individual project I have found that certain parts of the code are quite fragile - I realised adding new features to the project occasionally would cause other features to not work, which then I would have to fix. I have put this down to inexperience - something that I feel won't be an issue on my next project. 
+
+
 __Wireframes__
 
 ![wireframe1](https://user-images.githubusercontent.com/42447565/55080080-61a40880-5095-11e9-8b91-8a8cdd8170a7.png)
